@@ -1,0 +1,98 @@
+﻿@model ShoppingCartVM
+
+
+<form method="post" class="my-4">
+    <div class="container">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-secondary bg-gradient text-light py-4 d-flex justify-content-between align-items-center px-4">
+                <h5 class="text-white text-uppercase mb-0">Enquiry Contact Form</h5>
+                <a asp-action="Index" class="btn btn-outline-danger btn-sm">Back to Cart</a>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <!-- Contact Form Section -->
+                    <div class="col-12 col-lg-6">
+                        <h4 class="text-info mb-4">Contact Form</h4>
+
+                        <div class="mb-3">
+                            <label for="OrderHeader.Name" class="form-label">Name</label>
+                            <input asp-for="OrderHeader.Name" class="form-control" />
+                            <span asp-validation-for="OrderHeader.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="OrderHeader.PhoneNumber" class="form-label">Phone</label>
+                            <input asp-for="OrderHeader.PhoneNumber" class="form-control" />
+                            <span asp-validation-for="OrderHeader.PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="OrderHeader.StreetAddress" class="form-label">Street Address</label>
+                            <input asp-for="OrderHeader.StreetAddress" class="form-control" />
+                            <span asp-validation-for="OrderHeader.StreetAddress" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="OrderHeader.City" class="form-label">City</label>
+                            <input asp-for="OrderHeader.City" class="form-control" />
+                            <span asp-validation-for="OrderHeader.City" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="OrderHeader.State" class="form-label">Province</label>
+                            <input asp-for="OrderHeader.State" class="form-control" />
+                            <span asp-validation-for="OrderHeader.State" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="OrderHeader.PostalCode" class="form-label">Postal Code</label>
+                            <input asp-for="OrderHeader.PostalCode" class="form-control" />
+                            <span asp-validation-for="OrderHeader.PostalCode" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="OrderHeader.Email" class="form-label">Email</label>
+                            <input asp-for="OrderHeader.Email" class="form-control" />
+                            <span asp-validation-for="OrderHeader.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!-- Enquiry Summary Section -->
+                    <div class="col-12 col-lg-5 offset-lg-1">
+                        <h4 class="text-info mb-4">Enquiry Summary</h4>
+                        <ul class="list-group mb-4">
+                            @foreach (var details in Model.ShoppingCartList)
+                            {
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div>
+                                        <h6 class="my-0">@details.Car.Model</h6>
+                                    </div>
+                                    <span class="text-muted">@((details.Car.Price).ToString("c"))</span>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Section -->
+            <div class="card-footer bg-light">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <p class="text-muted mb-0">
+                            Estimated Response Date:
+                            <strong>@DateTime.Now.AddDays(2).ToString("dddd, MMMM dd, yyyy")</strong> -
+                            <strong>@DateTime.Now.AddDays(4).ToString("dddd, MMMM dd, yyyy")</strong>
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button type="submit" class="btn btn-primary bg-gradient w-100 fw-bold text-uppercase py-2">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

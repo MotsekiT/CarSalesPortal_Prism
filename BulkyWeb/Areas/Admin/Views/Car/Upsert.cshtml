@@ -1,0 +1,137 @@
+﻿@model CarVM
+
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">@(Model.Car.Id !=0 ? "Update" : "Create") Advert</h2>
+            </div>
+            
+            </div>
+        </div>
+     
+
+    <div class="card-body">
+
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Car.Id" hidden />
+            <input asp-for="Car.ImageUrl" hidden />
+            <div class="row">
+                <div class="col-10">
+                    <div class="border p-3">
+
+                        @* <div asp-validation-summary="Model"></div> *@
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Car.Make" class="form-control border-0 shadow" />
+                            <label asp-for="Car.Make" class="ms-2"></label>
+                            <span asp-validation-for="Car.Make" class="text-danger"></span>
+
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Car.Model" class="form-control border-0 shadow" />
+                            <label asp-for="Car.Model" class="ms-2 text-muted"></label>
+                            <span asp-validation-for="Car.Model" class="text-danger"></span>
+
+
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Car.Year" class="form-control border-0 shadow" />
+                            <label asp-for="Car.Year" class="ms-2"></label>
+                            <span asp-validation-for="Car.Year" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Car.Colour" class="form-control border-0 shadow" />
+                            <label asp-for="Car.Colour" class="ms-2"></label>
+                            <span asp-validation-for="Car.Colour" class="text-danger"></span>
+                        </div>
+                        
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Car.Price" class="form-control border-0 shadow" />
+                            <label asp-for="Car.Price" class="ms-2"></label>
+                            <span asp-validation-for="Car.Price" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Car.Status" class="form-control border-0 shadow" />
+                            <label asp-for="Car.Status" class="ms-2"></label>
+                            <span asp-validation-for="Car.Status" class="text-danger"></span>
+                        </div>
+
+                        
+                        <div class="form-floating py-2 col-12">
+                            <select asp-for="@Model.Car.CategoryId" asp-items="@Model.CategoryList" class="form-select border-0 shadow">
+                                <option disabled selected>--Select Category</option>
+                            </select>
+                            <label asp-for="Car.CategoryId" class="ms-2"></label>
+                            <span asp-validation-for="Car.CategoryId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input type="file" name="file" class="form-control border-0 shadow" />
+                            <label asp-for="Car.ImageUrl" class="ms-2"></label>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 col-md-3">
+                                @if (Model.Car.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                                }
+
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary border form-control">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+
+                    <img src="@Model.Car.ImageUrl"  width="100%"
+                         style="border-radius:5px; border:1px solid #bbb9b9" />
+                    
+                </div>
+            </div>
+            
+        </form>
+
+    </div>
+</div>
+
+
+
+
+
+ @section Scripts{
+    <script src="https://cdn.tiny.cloud/1/xglrjyx0gkdjyqu4m3st0mnxl2sf3hhy51w168ly0py9tllg/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons ',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+    </script>
+    @{
+    <partial name="_ValidationScriptsPartial" />
+     }
+  }
