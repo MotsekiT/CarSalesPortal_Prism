@@ -38,7 +38,7 @@ namespace CarSalesPortal.Areas.Customer.Controllers
 
             if(!String.IsNullOrEmpty(searchString))
             {
-                carList = carList.Where(n => n.Make.ToLower().Contains(searchString) || n.Model.ToLower().Contains(searchString)).ToList();
+                carList = carList.Where(n => n.Make.ToLower().Contains(searchString) || n.Price.ToString().Contains(searchString)).ToList();
             } 
 
 
