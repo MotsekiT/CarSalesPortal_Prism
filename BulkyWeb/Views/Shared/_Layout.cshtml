@@ -36,7 +36,9 @@
 
                       @if(User.IsInRole(SD.Role_Admin))
                     {
-
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Order</a>
+                        </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Content management
@@ -48,9 +50,7 @@
                             <li class="nav-item">
                                 <a class="dropdown-item" asp-area="Admin" asp-controller="Car" asp-action="Index">Product</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Order</a>
-                            </li>
+                            
                             <li><hr class="dropdown-divider"></li>
                         </ul>
                     </li>
@@ -88,12 +88,12 @@
 
 
     <!-- Header-->
-    <header class="masthead text-center text-white">
+    <header class="masthead text-center text-white" style="padding: 8rem 0;">
         <div class="masthead-content">
-            <div class="container px-5">
-                <h1 class="masthead-heading mb-0">Welcome To</h1>
-                <h2 class="masthead-subheading mb-0">PrismDX Car Portal</h2>
-                <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Learn More</a>
+            <div class="container px-1">
+                <h1 class="masthead-heading mb-0" style="font-size: 2.8rem;">Welcome To</h1>
+                <h2 class="masthead-subheading mb-0" style="font-size: 2.0rem;">PrismDX Car Portal</h2>
+                <a class="btn btn-primary btn-xl rounded-pill mt-4" href="#scroll" style="font-size: 1rem; padding: 0.75rem 1.5rem;">Learn More</a>
             </div>
         </div>
         <div class="bg-circle-1 bg-circle"></div>
@@ -101,6 +101,8 @@
         <div class="bg-circle-3 bg-circle"></div>
         <div class="bg-circle-4 bg-circle"></div>
     </header>
+
+
 
     <div class="container">
         <main role="main" class="pb-3">
